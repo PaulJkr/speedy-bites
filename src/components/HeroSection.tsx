@@ -6,7 +6,7 @@ const rotatingWords = ["SMASHED", "LOADED", "CRISPY", "SAUCY", "FLAME-GRILLED"];
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Background gradient overlay */}
+      {/* Background subtle warmth */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(25_95%_53%/0.15),transparent_60%)]" />
       
       <div className="container relative z-10 grid md:grid-cols-2 gap-8 items-center">
