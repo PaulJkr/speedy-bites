@@ -1,12 +1,19 @@
 import { motion } from "framer-motion";
+import { useCart } from "@/context/CartContext";
 import heroBurger from "@/assets/hero-burger.png";
 
 const rotatingWords = ["SMASHED", "LOADED", "CRISPY", "SAUCY", "FLAME-GRILLED"];
 
+const scrollTo = (id: string) => {
+  const el = document.querySelector(id);
+  el?.scrollIntoView({ behavior: "smooth" });
+};
+
 const HeroSection = () => {
+  const { setIsOpen } = useCart();
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Background subtle warmth */}
+    <section id="top" className="relative min-h-screen flex items-center overflow-hidden pt-20">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(24_60%_45%/0.08),transparent_60%)]" />
       
       <div className="container relative z-10 grid md:grid-cols-2 gap-8 items-center">
@@ -39,10 +46,16 @@ const HeroSection = () => {
             Order from the dopest spots in your city. Delivered to your door in minutes, not hours.
           </p>
           <div className="flex flex-wrap gap-4 mt-8">
-            <button className="bg-gradient-hero text-primary-foreground font-display text-xl tracking-wide px-8 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-glow">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="bg-gradient-hero text-primary-foreground font-display text-xl tracking-wide px-8 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-glow"
+            >
               ORDER NOW
             </button>
-            <button className="border border-border text-foreground font-display text-xl tracking-wide px-8 py-4 rounded-lg hover:bg-secondary transition-colors">
+            <button
+              onClick={() => scrollTo("#menu")}
+              className="border border-border text-foreground font-display text-xl tracking-wide px-8 py-4 rounded-lg hover:bg-secondary transition-colors"
+            >
               EXPLORE MENU
             </button>
           </div>
