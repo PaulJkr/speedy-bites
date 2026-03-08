@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Menu", href: "#menu" },
@@ -15,11 +16,13 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="font-display text-3xl md:text-4xl text-gradient tracking-wider">
-          FLAMEBITE
+        <a href="#" className="flex items-center gap-2">
+          <img src={logo} alt="FlameBite logo" className="h-10 md:h-12 w-auto" />
+          <span className="font-display text-2xl md:text-3xl text-gradient tracking-wider">
+            FLAMEBITE
+          </span>
         </a>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -42,7 +45,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setOpen(!open)}
@@ -51,7 +53,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div

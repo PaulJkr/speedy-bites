@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
       {/* Background subtle warmth */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(25_95%_53%/0.15),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,hsl(24_60%_45%/0.08),transparent_60%)]" />
       
       <div className="container relative z-10 grid md:grid-cols-2 gap-8 items-center">
         <motion.div

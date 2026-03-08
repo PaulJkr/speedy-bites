@@ -1,4 +1,5 @@
 import { Instagram, Twitter, Facebook, Youtube } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -6,8 +7,9 @@ const Footer = () => {
       <div className="container">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
-            <a href="#" className="font-display text-3xl text-gradient tracking-wider">
-              FLAMEBITE
+            <a href="#" className="flex items-center gap-2">
+              <img src={logo} alt="FlameBite logo" className="h-10 w-auto" />
+              <span className="font-display text-2xl text-gradient tracking-wider">FLAMEBITE</span>
             </a>
             <p className="font-body text-sm text-muted-foreground mt-3">
               The dopest food delivery platform. Fast, fresh, and not normal.
