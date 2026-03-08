@@ -13,6 +13,13 @@ The website focuses on:
 
 ---
 
+## 🌐 View Live
+
+Check out the live website here:
+
+[👉 View Live](https://speedy-bites-beta.vercel.app/)
+
+---
 # 💻 How to Run the Project Locally
 
 You can work on this project locally using your preferred IDE.
