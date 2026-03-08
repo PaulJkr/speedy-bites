@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
-import { Clock, Flame, Star } from "lucide-react";
+import { Clock, Star } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 import burgerImg from "@/assets/hero-burger.png";
 import wingsImg from "@/assets/wings.png";
 import pizzaImg from "@/assets/pizza.png";
 
 const deals = [
   {
+    id: "deal-smash",
     title: "SMASH COMBO",
     description: "Double smashburger + loaded fries + shake",
-    price: "R129",
+    price: 129,
     oldPrice: "R179",
     image: burgerImg,
     badge: "🔥 HOT DEAL",
@@ -16,9 +18,10 @@ const deals = [
     rating: "4.9",
   },
   {
+    id: "deal-wings",
     title: "WING FEAST",
     description: "12 Wings + 2 dips + large fries",
-    price: "R149",
+    price: 149,
     oldPrice: "R199",
     image: wingsImg,
     badge: "⭐ POPULAR",
@@ -26,9 +29,10 @@ const deals = [
     rating: "4.8",
   },
   {
+    id: "deal-pizza",
     title: "PIZZA MADNESS",
     description: "2 Large pizzas + garlic bread + 2L drink",
-    price: "R189",
+    price: 189,
     oldPrice: "R259",
     image: pizzaImg,
     badge: "💰 BEST VALUE",
@@ -38,6 +42,8 @@ const deals = [
 ];
 
 const FeaturedDeals = () => {
+  const { addItem } = useCart();
+
   return (
     <section id="deals" className="py-20 md:py-32">
       <div className="container">
@@ -92,10 +98,13 @@ const FeaturedDeals = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display text-3xl text-primary">{deal.price}</span>
+                    <span className="font-display text-3xl text-primary">R{deal.price}</span>
                     <span className="font-body text-sm text-muted-foreground line-through">{deal.oldPrice}</span>
                   </div>
-                  <button className="bg-gradient-hero text-primary-foreground font-display text-sm tracking-wide px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">
+                  <button
+                    onClick={() => addItem({ id: deal.id, name: deal.title, price: deal.price, image: deal.image })}
+                    className="bg-gradient-hero text-primary-foreground font-display text-sm tracking-wide px-4 py-2 rounded-lg hover:opacity-90 transition-opacity active:scale-95"
+                  >
                     ADD TO CART
                   </button>
                 </div>
