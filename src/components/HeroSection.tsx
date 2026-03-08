@@ -1,6 +1,21 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import heroBurger from "@/assets/hero-burger.png";
+import wingsImg from "@/assets/wings.png";
+import pizzaImg from "@/assets/pizza.png";
+import friesImg from "@/assets/fries.png";
+import chickenImg from "@/assets/chicken-burger.png";
+import shakeImg from "@/assets/shake.png";
+
+const heroFoods = [
+  { image: heroBurger, alt: "Juicy smashburger with melted cheese and bacon" },
+  { image: wingsImg, alt: "Crispy fried chicken wings with sauce" },
+  { image: pizzaImg, alt: "Pepperoni pizza with melted mozzarella" },
+  { image: friesImg, alt: "Loaded cheese fries with toppings" },
+  { image: chickenImg, alt: "Crispy chicken burger sandwich" },
+  { image: shakeImg, alt: "Chocolate milkshake with whipped cream" },
+];
 
 const rotatingWords = ["SMASHED", "LOADED", "CRISPY", "SAUCY", "FLAME-GRILLED"];
 
@@ -11,6 +26,14 @@ const scrollTo = (id: string) => {
 
 const HeroSection = () => {
   const { setIsOpen } = useCart();
+  const [currentFood, setCurrentFood] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFood((prev) => (prev + 1) % heroFoods.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="top" className="relative min-h-screen flex items-center overflow-hidden pt-20">
@@ -67,13 +90,20 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative flex justify-center"
         >
-          <div className="relative">
+          <div className="relative w-full max-w-lg aspect-square">
             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
-            <img
-              src={heroBurger}
-              alt="Juicy smashburger with melted cheese and bacon"
-              className="relative z-10 w-full max-w-lg animate-float rounded-3xl"
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentFood}
+                src={heroFoods[currentFood].image}
+                alt={heroFoods[currentFood].alt}
+                initial={{ opacity: 0, scale: 0.85, rotate: -5 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.85, rotate: 5 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="relative z-10 w-full h-full object-cover rounded-3xl"
+              />
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>
