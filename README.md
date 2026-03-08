@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project is a modern **Food & Restaurant Website** designed to showcase delicious meals, menus, promotions, and restaurant information. The goal is to provide users with an engaging experience where they can explore dishes, discover specials, and learn more about the restaurant.
+This project is a modern UI/UX **Food & Restaurant Website** designed to showcase delicious meals, menus, promotions, and restaurant information. The goal is to provide users with an engaging experience where they can explore dishes, discover specials, and learn more about the restaurant.
 
 The website focuses on:
 
