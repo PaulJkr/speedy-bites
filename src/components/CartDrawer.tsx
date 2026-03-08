@@ -4,7 +4,16 @@ import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 
 const CartDrawer = () => {
-  const { items, isOpen, setIsOpen, updateQuantity, removeItem, clearCart, total, itemCount } = useCart();
+  const {
+    items,
+    isOpen,
+    setIsOpen,
+    updateQuantity,
+    removeItem,
+    clearCart,
+    total,
+    itemCount,
+  } = useCart();
 
   return (
     <AnimatePresence>
@@ -30,14 +39,19 @@ const CartDrawer = () => {
             <div className="flex items-center justify-between p-6 border-b border-border">
               <div className="flex items-center gap-3">
                 <ShoppingBag className="w-5 h-5 text-primary" />
-                <h2 className="font-display text-2xl tracking-wide">YOUR ORDER</h2>
+                <h2 className="font-display text-2xl tracking-wide">
+                  YOUR ORDER
+                </h2>
                 {itemCount > 0 && (
                   <span className="bg-primary text-primary-foreground font-body text-xs font-bold px-2 py-0.5 rounded-full">
                     {itemCount}
                   </span>
                 )}
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -47,7 +61,9 @@ const CartDrawer = () => {
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
                   <ShoppingBag className="w-16 h-16 text-muted-foreground/30 mb-4" />
-                  <p className="font-display text-xl text-muted-foreground">CART IS EMPTY</p>
+                  <p className="font-display text-xl text-muted-foreground">
+                    CART IS EMPTY
+                  </p>
                   <p className="font-body text-sm text-muted-foreground mt-1">
                     Add some fire items from the menu
                   </p>
@@ -69,13 +85,17 @@ const CartDrawer = () => {
                         className="w-20 h-20 rounded-lg object-cover"
                       />
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-display text-lg tracking-wide truncate">{item.name}</h4>
+                        <h4 className="font-display text-lg tracking-wide truncate">
+                          {item.name}
+                        </h4>
                         <p className="font-display text-primary text-lg">
                           R{item.price * item.quantity}
                         </p>
                         <div className="flex items-center gap-3 mt-1">
                           <button
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity - 1)
+                            }
                             className="w-7 h-7 rounded-md bg-card flex items-center justify-center text-foreground hover:bg-primary/20 transition-colors"
                           >
                             <Minus className="w-3 h-3" />
@@ -84,7 +104,9 @@ const CartDrawer = () => {
                             {item.quantity}
                           </span>
                           <button
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity + 1)
+                            }
                             className="w-7 h-7 rounded-md bg-card flex items-center justify-center text-foreground hover:bg-primary/20 transition-colors"
                           >
                             <Plus className="w-3 h-3" />
@@ -107,26 +129,32 @@ const CartDrawer = () => {
             {items.length > 0 && (
               <div className="border-t border-border p-6 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="font-body text-muted-foreground">Subtotal</span>
-                  <span className="font-display text-2xl">R{total}</span>
+                  <span className="font-body text-muted-foreground">
+                    Subtotal
+                  </span>
+                  <span className="font-display text-2xl">Ksh.{total}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="font-body text-muted-foreground">Delivery</span>
+                  <span className="font-body text-muted-foreground">
+                    Delivery
+                  </span>
                   <span className="font-body text-sm text-primary">FREE</span>
                 </div>
                 <div className="flex justify-between items-center border-t border-border pt-3">
                   <span className="font-display text-xl">TOTAL</span>
-                  <span className="font-display text-3xl text-primary">R{total}</span>
+                  <span className="font-display text-3xl text-primary">
+                    Ksh.{total}
+                  </span>
                 </div>
                 <button
                   onClick={() => {
-                    toast.success("Order placed! 🔥 Your food is on the way.");
+                    toast.success("Order placed! Your food is on the way.");
                     clearCart();
                     setIsOpen(false);
                   }}
                   className="w-full bg-gradient-hero text-primary-foreground font-display text-xl tracking-wide py-4 rounded-lg hover:opacity-90 transition-opacity shadow-glow"
                 >
-                  CHECKOUT — R{total}
+                  CHECKOUT — Ksh.{total}
                 </button>
                 <button
                   onClick={clearCart}

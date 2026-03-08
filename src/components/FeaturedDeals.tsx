@@ -11,9 +11,9 @@ const deals = [
     title: "SMASH COMBO",
     description: "Double smashburger + loaded fries + shake",
     price: 129,
-    oldPrice: "R179",
+    oldPrice: "Ksh.179",
     image: burgerImg,
-    badge: "🔥 HOT DEAL",
+    badge: "HOT DEAL",
     time: "25 min",
     rating: "4.9",
   },
@@ -22,9 +22,9 @@ const deals = [
     title: "WING FEAST",
     description: "12 Wings + 2 dips + large fries",
     price: 149,
-    oldPrice: "R199",
+    oldPrice: "Ksh.199",
     image: wingsImg,
-    badge: "⭐ POPULAR",
+    badge: "POPULAR",
     time: "30 min",
     rating: "4.8",
   },
@@ -33,9 +33,9 @@ const deals = [
     title: "PIZZA MADNESS",
     description: "2 Large pizzas + garlic bread + 2L drink",
     price: 189,
-    oldPrice: "R259",
+    oldPrice: "Ksh.259",
     image: pizzaImg,
-    badge: "💰 BEST VALUE",
+    badge: "BEST VALUE",
     time: "35 min",
     rating: "4.7",
   },
@@ -98,11 +98,22 @@ const FeaturedDeals = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-baseline gap-2">
-                    <span className="font-display text-3xl text-primary">R{deal.price}</span>
-                    <span className="font-body text-sm text-muted-foreground line-through">{deal.oldPrice}</span>
+                    <span className="font-display text-3xl text-primary">
+                      Ksh.{deal.price}
+                    </span>
+                    <span className="font-body text-sm text-muted-foreground line-through">
+                      {deal.oldPrice}
+                    </span>
                   </div>
                   <button
-                    onClick={() => addItem({ id: deal.id, name: deal.title, price: deal.price, image: deal.image })}
+                    onClick={() =>
+                      addItem({
+                        id: deal.id,
+                        name: deal.title,
+                        price: deal.price,
+                        image: deal.image,
+                      })
+                    }
                     className="bg-gradient-hero text-primary-foreground font-display text-sm tracking-wide px-4 py-2 rounded-lg hover:opacity-90 transition-opacity active:scale-95"
                   >
                     ADD TO CART
