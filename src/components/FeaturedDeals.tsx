@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Clock, Star } from "lucide-react";
+import { Clock, Star, Flame, TrendingUp, BadgeDollarSign } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import burgerImg from "@/assets/hero-burger.png";
 import wingsImg from "@/assets/wings.png";
@@ -14,6 +14,8 @@ const deals = [
     oldPrice: "Ksh.179",
     image: burgerImg,
     badge: "HOT DEAL",
+    icon: Flame,
+    badgeColor: "text-red-500",
     time: "25 min",
     rating: "4.9",
   },
@@ -25,6 +27,8 @@ const deals = [
     oldPrice: "Ksh.199",
     image: wingsImg,
     badge: "POPULAR",
+    icon: TrendingUp,
+    badgeColor: "text-orange-500",
     time: "30 min",
     rating: "4.8",
   },
@@ -36,6 +40,8 @@ const deals = [
     oldPrice: "Ksh.259",
     image: pizzaImg,
     badge: "BEST VALUE",
+    icon: BadgeDollarSign,
+    badgeColor: "text-green-500",
     time: "35 min",
     rating: "4.7",
   },
@@ -47,6 +53,7 @@ const FeaturedDeals = () => {
   return (
     <section id="deals" className="py-20 md:py-32">
       <div className="container">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,26 +68,34 @@ const FeaturedDeals = () => {
           </h2>
         </motion.div>
 
+        {/* Deals Grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {deals.map((deal, i) => (
             <motion.div
-              key={deal.title}
+              key={deal.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="group bg-card rounded-2xl overflow-hidden shadow-card hover:ring-2 hover:ring-primary/50 transition-all cursor-pointer"
             >
+              {/* Deal Image */}
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
                   src={deal.image}
                   alt={deal.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="absolute top-3 left-3 bg-background/80 backdrop-blur-sm text-foreground font-body text-xs font-semibold px-3 py-1 rounded-full">
+                {/* Badge with Icon */}
+                <span
+                  className={`absolute top-3 left-3 flex items-center gap-1 bg-background/80 backdrop-blur-sm font-body text-xs font-semibold px-3 py-1 rounded-full ${deal.badgeColor}`}
+                >
+                  <deal.icon className="w-3 h-3" />
                   {deal.badge}
                 </span>
               </div>
+
+              {/* Deal Content */}
               <div className="p-5">
                 <div className="flex items-center gap-3 text-muted-foreground text-xs font-body mb-2">
                   <span className="flex items-center gap-1">
